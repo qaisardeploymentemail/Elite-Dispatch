@@ -1,0 +1,30 @@
+name: elitetruckdispatch
+services:
+  web:
+    build: .
+    container_name: elitetruckdispatch-web
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:1404:3000" # host nginx proxies to this
+    restart: unless-stopped
+
+    # --- Hardening: contain any future app RCE so it can't drop/run a miner ---
+    read_only: true                 # root filesystem is immutable
+    tmpfs:                          # only writable areas, and NON-executable
+      - /tmp:rw,noexec,nosuid,nodev,size=64m
+      - /app/.next/cache:rw,noexec,nosuid,nodev,size=128m
+    security_opt:
+      - no-new-privileges:true      # block setuid privilege escalation
+    cap_drop:
+      - ALL                         # drop all Linux capabilities
+    cpus: "1.0"                     # a runaway process can't peg the box
+    mem_limit: 512m
+    pids_limit: 200                 # blocks fork bombs / miner thread sprawl
+
+networks:
+  # Pinned subnet so the host egress firewall (allow only DNS + SMTP out) is stable.
+  default:
+    ipam:
+      config:
+        - subnet: 192.168.134.0/24

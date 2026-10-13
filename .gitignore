@@ -1,0 +1,41 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Next.js build output
+/.next/
+/out/
+next-env.d.ts
+
+# Production
+/build
+
+# Vercel
+.vercel
+
+# Environment variables
+.env*.local
+.env
+.env.production
+.env.development
+
+# Sensitive credentials & personal tokens (CRITICAL: keep out of Git)
+token.txt
+*_credentials*
+_credentials.md
+docs/_credentials.md
+
+# Operating System files
+.DS_Store
+Thumbs.db
+__MACOSX
+
+# Logs & debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# TypeScript
+*.tsbuildinfo
