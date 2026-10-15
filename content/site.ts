@@ -27,7 +27,7 @@ export const site = {
   // Deployed URL (used for metadata/OG/sitemap)
   // Canonical host (2026-09-10): note the double-L "ellite". The single-L
   // hostname still resolves and 301-redirects here.
-  url: "https://ellitetruckdispatch.desidhabawah.com",
+  url: "https://www.elitedispatch.us.com",
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61576363635365",
     instagram: "https://www.instagram.com/elitetruckdispatch/",
